@@ -8,7 +8,7 @@ where $f_F$ is a stiff but cheap term and $f_S$ is a mildly stiff but expensive 
 In addition to the explicit stabilized methods listed below, standard methods such as explicit and implicit Euler, explicit and implicit midpoint, and Runge-Kutta 4 are implemented for comparison purposes.
 
 ## Explicit stabilized methods
-Explicit stabilized methods use an increased number of stages to increase stability, in contrast to standard methods that use more stages to increase accuracy. Due to this different strategy, the stability domain grows quadratically along the negative real axis and the methods have no step size restriction (despite being explicit). See below the stability domain of the RKC method for $10$ (green) and $5$ (red) function evaluations. As a comparison, the stability domain of explicit Euler with 10 function evaluations would cover the $[-20,0]$ interval only.
+Explicit stabilized methods use an increased number of stages to increase stability, in contrast to standard methods that use more stages to increase accuracy. Due to this different strategy, the stability domain grows quadratically along the negative real axis and the methods have no step size restriction (despite being explicit). For instance, see below the stability domain of the RKC method for $10$ (green) and $5$ (red) function evaluations. As a comparison, the stability domain of explicit Euler with 10 function evaluations would cover the $[-20,0]$ interval only.
 
 <p align="center">
   <img src="./docs/img/stab_dom_rlc.png" height="80"/>
@@ -17,7 +17,7 @@ Explicit stabilized methods use an increased number of stages to increase stabil
 In this code we implement the following explicit stabilized methods: [RKC](https://doi.org/10.1016/S0377-0427(97)00219-7), [ROCK](https://doi.org/10.1007/s002110100292), [RKL](https://doi.org/10.1016/j.jcp.2013.08.021), RKU[^RKU] for the non multirate problem $y'=f(y)$.
 
 ## Multirate explicit stabilized methods
-When solving a multirate equation $y'=f_F(y)+f_S(y)$ with a standard explicit stabilized method, as RKC, the two terms $f_F,f_S$ are evaluated together. Therefore, the number of function evaluations might depend on the severe stiffness of very few terms in $f_F$. This destroys efficiency since the expensive term $f_S$ is evaluated as many times as $f_F$. Hence, the evaluation of $f_F$ and $f_S$ must be decoupled.
+When solving a multirate equation $y'=f_F(y)+f_S(y)$ with an explicit stabilized method as RKC, the two terms $f_F,f_S$ are evaluated together. Therefore, the number of function evaluations might depend on the severe stiffness of very few terms in $f_F$. This destroys efficiency since the expensive term $f_S$ is evaluated as many times as $f_F$. Hence, the evaluation of $f_F$ and $f_S$ must be decoupled.
 
 ### Modified equation
 Instead of solving the original multirate problem
@@ -67,7 +67,7 @@ To run a simulation
 - with the mRKC method and step size $\Delta t=0.01$: `-rk mRKC -dt 1e-2`,
 - with output in `.bin` format every 10 time steps: `-bin true -ofreq 10`,
 
-execute:
+in the `build` directory execute:
 
 ```
 ./MultirateIntegrators -test 5 -rk mRKC -dt 1e-2 -bin true -ofreq 10
@@ -77,7 +77,7 @@ The output is stored in the `results` folder.
 
 ### Visualization
 
-For visualization of the results, several Matlab scripts are provided in the `matlab` folder. To produce output with the appropriate format use the `-matlab true` argument.
+For visualization of the results, several Matlab scripts are provided in the `matlab` folder. To produce output with the appropriate format use either the `-matlab true` or `-bin true` arguments.
 
 
 
