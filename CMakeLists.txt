@@ -31,7 +31,6 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 #download submodules
 find_package(Git QUIET)
 if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
-# message(STATUS "GITFOUND and .git")
 # Update submodules as needed
     option(GIT_SUBMODULE "Check submodules during build" ON)
     if(GIT_SUBMODULE)
@@ -43,7 +42,6 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
             message(FATAL_ERROR "git submodule update --init --recursive failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
         endif()
     else()
-    # message(STATUS "Not found GIT_SUBMODULE")
     endif()
 endif()
 
