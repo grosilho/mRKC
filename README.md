@@ -21,20 +21,14 @@ When solving a multirate equation $y'=f_F(y)+f_S(y)$ with a standard explicit st
 
 ### Modified equation
 Instead of solving the original multirate problem
-$$
-y'=f_F(y)+f_S(y),
-$$
+$$y'=f_F(y)+f_S(y),$$
 the multirate explicit stabilized methods, as mRKC, solve a modified equation
-$$
-y_\eta'=f_\eta(y_\eta),\qquad y_\eta(0)=y_0,
-$$
+$$y_\eta'=f_\eta(y_\eta),\qquad y_\eta(0)=y_0,$$
 with an explicit stabilized method, as RKC in this case. The advantage is that the modified equation is such that the stiffness of $f_\eta$ depends on the slow terms $f_S$ only, and therefore solving  $y_\eta'=f_\eta(y_\eta)$ is cheaper than $y'=f_F(y)+f_S(y)$. Moreover, evaluating $f_\eta$ has a similar cost as $f_F+f_S$.
 
 ### The auxiliary problem
 The averaged right-hand side $f_\eta(y_\eta)$ is defined by solving an auxiliary problem
-$$
-u'=f_F(u)+f_S(y_\eta) \quad t\in (0,\eta), \quad u(0)=y_\eta,\qquad f_\eta(y_\eta)=\tfrac{1}{\eta}(u(\eta)-y_\eta).
-$$
+$$u'=f_F(u)+f_S(y_\eta) \quad t\in (0,\eta), \quad u(0)=y_\eta,\qquad f_\eta(y_\eta)=\tfrac{1}{\eta}(u(\eta)-y_\eta).$$
 Since the expensive term $f_S$ is frozen, solving the auxiliary problem is comparable to evaluating $f_F+f_S$. The value of $\eta>0$ depends on the stiffness of $f_S$ and in general satisfies $\eta\ll\Delta t$, with $\Delta t$ the step size used to solve the modified equation $y_\eta'=f_\eta(y_\eta)$. The auxiliary problem is solved as well using an explicit stabilized method, in this case, RKC.
 
 ## References
