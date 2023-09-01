@@ -1,5 +1,5 @@
 # mRKC
-short description
+WORK IN PROGRESS
 
 ### The modified equation
 bla
