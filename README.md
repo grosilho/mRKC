@@ -1,12 +1,8 @@
 # mRKC
 This code is a C++ implementation of several explicit stabilized methods for solving ordinary differential equations
-$$
-y'=f(t,y),\qquad y(0)=y_0
-$$
+$$y'=f(t,y),\qquad y(0)=y_0$$
 and multirate ordinary differential equations
-$$
-y'=f_F(t,y)+f_S(t,y),\qquad y(0)=y_0,
-$$
+$$y'=f_F(t,y)+f_S(t,y),\qquad y(0)=y_0,$$
 where $f_F$ is a stiff but cheap term and $f_S$ is a mildly stiff but expensive term.
 
 In addition to the explicit stabilized methods listed below, standard methods such as explicit and implicit Euler, explicit and implicit midpoint, and Runge-Kutta 4 are implemented for comparison purposes.
