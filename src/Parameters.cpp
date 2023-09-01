@@ -190,7 +190,7 @@ bool Parameters::read_command_line(int argc, char** argv)
         cout<<"This code implements several explicit stabilized methods, among which mRKC, RKC, ROCK2.\n"
             <<"Standard methods as EE, IE, RK4, midpoint methods are implemented for comparison.\n"
             <<"Different problems are hardcoded in the executable. Look into src/OdeProblems.cpp.\n"
-            <<"Run the code from the ./build folder as ./main OPTIONS, where OPTIONS is a combination of the below.\n"
+            <<"Run the code from the ./build folder as ./MultirateIntegrators OPTIONS, where OPTIONS is a combination of the below.\n"
               "Results are stored in the ./results folder.\n"<<endl;
         cout<<"The following options are available:\n"
             <<"--- General options:\n"           

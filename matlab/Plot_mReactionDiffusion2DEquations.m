@@ -2,8 +2,8 @@ clear;
 clc;
 close all;
 
-folder = '../dist/Release/GNU_Version_10-MacOSX/Tests/mReactionDiffusion2DEquations/';
-sol_name = 'sol_rkc';
+folder = '../results/mReactionDiffusion2DEquations/';
+sol_name = 'sol';
 % sol_name = 'sol_rkcsq';
 file_name = [folder sol_name '_evolution.m'];
 

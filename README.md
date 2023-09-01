@@ -1,12 +1,17 @@
 # mRKC
-WORK IN PROGRESS
+This code is a C++ implementation of several explicit stabilized methods for solving ordinary differential equations
+$$
+y'=f(y),\qquad y(0)=y_0
+$$
+and multirate ordinary differential equations
+$$
+y'=f_F(y)+f_S(y),\qquad y(0)=y_0,
+$$
+where $f_F$ is a stiff but cheap term and $f_S$ is a mildly stiff but expensive term.
 
-### The modified equation
-bla
+Explicit stabilized methods use an increased number of stages to increase stability, in contrast to standard methods that use more stages to increase accuracy. Due to this different strategy, the stability domain grows quadratically along the negative real axis and the methods have no step size restriction (despite being explicit).
 
-### Combination of RKC methods
-bla 
-
+In this code we implement the following explicit stabilized methods: [RKC](), [ROCK], [RKL], RKU[^RKU] for the non multirate problem $y'=f(y)'$.
 
 ### References
 This code has been used for the numerical experiments presented in:
@@ -40,29 +45,16 @@ For the `ARGS_LIST`, see the next section.
 For the full list of arguments use the `--help` option or check out the [`ARGS_LIST.md`](ARGS_LIST.md) file, here we just provide an example.
 
 To run a simulation
-
-- with step size $\Delta t=0.01 ms$ and mesh size $\Delta x=10\mu m=1e\text{-}3cm$: `-dt 1e-2 -dG 1e-3`,
-- for a duration of $10ms$: `-tend 10`,
-- with output in `.vtk` format every 10 time steps: `-vtk true -ofreq 10`,
-- on a block of 2x10 cells: `-nx 10 -ny 2`,
-- with cells of length $c_l=100\mu m=0.01 cm$ and width $c_w=20\mu m=0.002 cm$: `-cl 1e-2 -cw 2e-3`,
-- both leftmost cells are stimulated: `-nic 2`,
-- with vertical gap junctions having a wave shape with amplitude $1\mu m=1e\text{-}4 cm$, frequency $2$ and being smooth: `-va 1e-4 -vf 2 -vs true`,
-- with horizontal gap junctions having a wave shape with amplitude $2\mu m=2e\text{-}4 cm$, length $30\mu m=0.003 cm$ and being squared: `-ha 2e-4 -hl 3e-3 -hs false`,
-- with horizontal gap junctions randomly placed along the horizontal cell side and their permeability being zero with probability 30% : `-halt 2 -hprob 0.3`,
-
+- solving the PDE Brusselator benchmark (problem 5): `-test 5`,
+- with the mRKC method and step size $\Delta t=0.01$: `-rk mRKC -dt 1e-2`,
+- with output in `.bin` format every 10 time steps: `-bin true -ofreq 10`,
 execute:
 
 ```
-./bemi -dt 1e-2 -dG 1e-3 -tend 10 -vtk true -ofreq 10 -nx 10 -ny 2 -cl 1e-2 
--cw 2e-3 -nic 2 -va 1e-4 -vf 2 -vs true -ha 2e-4 -hl 3e-3 -hs false -halt 2 
--hprob 0.3
+./MultirateIntegrators -test 5 -rk mRKC -dt 1e-2 -bin true -ofreq 10
 ```
 
 The output is stored in the `results` folder.
-
-# Acknowledgements
-Assyr???
 
 
 <p align="center">
