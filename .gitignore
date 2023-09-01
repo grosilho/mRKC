@@ -33,7 +33,6 @@
 
 # Folders
 build
-results
 
 # MacOS files
 *.DS_Store

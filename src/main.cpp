@@ -8,10 +8,9 @@ int main(int argc, char** argv)
   
 //  Default parameters
     Parameters params; // Class for storing the parameters/options and initializing the integrators
-    params.ntest = 20;           //problem number
+    params.ntest = 1;           //problem number
     params.refsol_path = "";    //name of file containing reference solution. If empty, in a convergence test a reference solution is computed on the fly.
     params.verbose = true;      //show step info, otherwise just initial and final info.
-    params.eq = ODE;            //ODE or D_SDE (SDE driven by diffusion) or JD_SDE (SDE driven by jump diffusion).
     params.rk_name = "RKC1";     //name of the solver
     params.dt = 1e-2;            //step size, or starting step size in case dtadap=true.
     params.rho_freq = 10;        //estimation of the spectral radius every rho_freq steps
@@ -24,8 +23,8 @@ int main(int argc, char** argv)
     
 //  Parameters for convergence experiments
     params.conv_test = false;   //if false, we run once the experiment with step size params.dt
-    params.max_pow = 7;         //if true we run a convergence test with step sizes tend/2^k,
-    params.min_pow = 6;         //with k=min_pow,...,max_pow.
+    params.max_pow = 6;         //if true we run a convergence test with step sizes tend/2^k,
+    params.min_pow = 3;         //with k=min_pow,...,max_pow.
     
 //  Specific for step size adaptivity (only for ODEs)
     params.dtadap = false;      //toggles step size adaptivity.

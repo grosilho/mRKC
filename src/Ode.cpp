@@ -5,7 +5,6 @@ Ode::Ode()
     cte_rho=false;
     know_rho=false;
     analytical_df=false;
-    autodiff_df = false;
     dense_Jacobian=true;
     
     multirate=false;
@@ -62,17 +61,10 @@ bool Ode::has_dense_Jacobian()
     return dense_Jacobian;
 }
 
-bool Ode::autodiff_implemented()
-{
-    return autodiff_df;
-}
-
 void Ode::df(Real t, Vector& x, Matrix& dfx)
 {
     if(analytical_df)
         this->AN_df(t,x,dfx);
-    else if(autodiff_df)
-        this->AD_df(t,x,dfx);
     else//finite difference
         this->FD_df(t,x,dfx);
 }
@@ -81,8 +73,6 @@ void Ode::df(Real t, Vector& x, SpMatrix& dfx)
 {
     if(analytical_df)
         this->AN_df(t,x,dfx);
-    else if(autodiff_df)
-        this->AD_df(t,x,dfx);
     else//finite difference
         this->FD_df(t,x,dfx);
 }

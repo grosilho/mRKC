@@ -6,7 +6,7 @@ target_link_libraries(MainHeader INTERFACE Eigen3::Eigen)
 #target_include_directories(MainHeader INTERFACE)
 
 add_subdirectory(lean_vtk)
-add_subdirectory(uBidomain)
+add_subdirectory(ionic_models)
 
 add_library(chebyshev_methods ChebyshevMethods.cpp)
 target_include_directories(chebyshev_methods PUBLIC MainHeader)
@@ -22,23 +22,18 @@ target_link_libraries(ode PUBLIC MainHeader)
 target_include_directories(ode PUBLIC MainHeader)
 
 add_library(ode_problems OdeProblems.cpp)
-target_include_directories(ode_problems PUBLIC ../include/lean_vtk ../include/uBidomain)
+target_include_directories(ode_problems PUBLIC ../include/lean_vtk ../include/ionic_models)
 target_link_libraries(ode_problems PUBLIC ode lean_vtk myokit_ionic_model)
-
-add_library(ode_cellbycell_model ODECellByCellModel.cpp)
-target_include_directories(ode_cellbycell_model PUBLIC ../include/uBidomain)
-target_link_libraries(ode_cellbycell_model PUBLIC cellbycell_model ode myokit_ionic_model)
 
 add_library(multirate_ode_problems MultirateOdeProblems.cpp)
 target_link_libraries(multirate_ode_problems PUBLIC ode_problems)
 
 # Others
 add_library(parameters Parameters.cpp)
-target_include_directories(parameters PUBLIC ../include/lean_vtk ../include/uBidomain ../include/getpot)
+target_include_directories(parameters PUBLIC ../include/lean_vtk ../include/ionic_models ../include/getpot)
 target_link_libraries(parameters PUBLIC                             
                             multirate_ode_rungekutta_integrator
                             multirate_ode_problems
-                            ode_cellbycell_model
                             stabilized_ode_rungekutta_integrator
                             classical_ode_rungekutta_integrator
                             )

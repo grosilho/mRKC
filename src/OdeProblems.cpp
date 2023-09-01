@@ -11,7 +11,6 @@ DahlquistTestProblem::DahlquistTestProblem()
     cte_rho = true;
     know_rho = true;
     analytical_df=true;
-    autodiff_df = true;
     dense_Jacobian=true;
     
     lambda = -100.;
@@ -53,7 +52,6 @@ ScalarNonStiffNonLinearTest::ScalarNonStiffNonLinearTest()
     cte_rho = false;
     know_rho = true;
     analytical_df=true;
-    autodiff_df = true;
     dense_Jacobian=true;
 }
 
@@ -92,7 +90,6 @@ NeuronCable::NeuronCable()
     cte_rho = true;
     know_rho = true;
     analytical_df=false;
-    autodiff_df=true;
     dense_Jacobian=false;
 }
 
@@ -138,7 +135,6 @@ Brusselator::Brusselator()
     cte_rho = false;
     know_rho = false;
     analytical_df=false;
-    autodiff_df=false;
     dense_Jacobian=true;
     
     alpha = 1.9;
@@ -171,7 +167,6 @@ PDEBrusselator::PDEBrusselator()
     cte_rho = false;
     know_rho = false;
     analytical_df=false;
-    autodiff_df = true;
     dense_Jacobian=false;
     
     A = 1.;
@@ -242,7 +237,6 @@ Krogh10::Krogh10()
     cte_rho = false;
     know_rho = true;
     analytical_df=false;
-    autodiff_df = true;
     dense_Jacobian=true;
 }
 
@@ -488,7 +482,6 @@ RobertsonChemicalSystem::RobertsonChemicalSystem()
     cte_rho = false;
     know_rho = false;
     analytical_df=false;
-    autodiff_df=true;
     dense_Jacobian=true;
     
     k1 = 0.04;
@@ -653,7 +646,7 @@ mReactionDiffusion2DEquations::mReactionDiffusion2DEquations()
         D[0] = 1.31;
         D[1] = 34.;
         D[2] = 9.87;
-        D[3] = 3449; //originally 344.9
+        D[3] = 344.9; //originally 344.9
 
         alpha = 1.; // 1 for Fig 3bc, 0.1 else
         beta = alpha;

@@ -199,8 +199,8 @@ bool  OdeRungeKuttaIntegrator::integrate()
     if(last && output_frequency>=0)
         output_final_solution(yn);
     
-    if(last && param->refsol_path.compare(string(""))!=0)
-        compute_errors();
+    if(last && param->refsol_path.compare(string(""))!=0 && !param->conv_test)
+        compute_errors(yn);
     
     return last;
 }     

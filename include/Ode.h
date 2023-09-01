@@ -43,7 +43,6 @@ protected:
     bool cte_rho;
     bool know_rho;
     bool analytical_df;
-    bool autodiff_df;
     
     string problem_name;
     
