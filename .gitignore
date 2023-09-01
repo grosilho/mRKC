@@ -33,6 +33,9 @@
 
 # Folders
 build
+.vscode
+results
+install
 
 # MacOS files
 *.DS_Store

@@ -1,6 +1,0 @@
-[submodule "external/eigen"]
-	path = external/eigen
-	url = https://gitlab.com/libeigen/eigen.git
-[submodule "external/getpot"]
-	path = external/getpot
-	url = https://github.com/loumalouomega/getpot-cpp.git
