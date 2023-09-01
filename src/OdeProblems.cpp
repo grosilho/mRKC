@@ -1386,8 +1386,8 @@ MonoDomain::MonoDomain()
 //    im = make_unique<uBidomain::HodgkinHuxley>();
     im = make_unique<uBidomain::MyoKit::MyoKitIonicModel>();
     
-//    tend=800.; // [ms]
-    tend = im->get_tend();        
+    tend=60.; // [ms]
+    // tend = im->get_tend();        
     
     string unit = "mm";
     

@@ -2,15 +2,14 @@ clear;
 %clc;
 %close all;
 
-solname = 'tmp';
+solname = 'sol';
 read_gating_vars = false;
 
 folder = '../results/MonoDomain/';
-folder = '../results/ODECellByCellModel/';
 
-Lx = 1.25;
-Ly = 0.05;
-h = 0.01;
+Lx = 2.;
+Ly = 0.7;
+h = 0.025;
 
 Nx = ceil(1+Lx/h);
 Ny = ceil(1+Ly/h);
@@ -18,7 +17,7 @@ hx = Lx/(Nx-1.);
 hy = Ly/(Ny-1.);
 
 n_pts = Nx*Ny;
-n_states = 8; % 8 for LuoRudy, 13 for Fox, 21 for Courtemanche, 41 for Ohara Rudy
+n_states = 21; % 8 for LuoRudy, 13 for Fox, 21 for Courtemanche,
 fileID = fopen([folder solname '_evolution.bin']);
 if read_gating_vars
     A = fread(fileID,'double');
