@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.17...3.24)
 
 file(MAKE_DIRECTORY build)
-file(MAKE_DIRECTORY install)
-file(MAKE_DIRECTORY results)
 
 project(MultirateIntegrators
         VERSION 1.0 
@@ -14,17 +12,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE "Release")
 
 option(BUILD_SHARED_LIBS "Build shared (ON) or static (OFF) libraries" OFF)
-
-find_package(Eigen3 REQUIRED CONFIG) # Eigen3::Eigen
-
-macro(print_all_variables)
-    message(STATUS "print_all_variables------------------------------------------{")
-    get_cmake_property(_variableNames VARIABLES)
-    foreach (_variableName ${_variableNames})
-        message(STATUS "${_variableName}=${${_variableName}}")
-    endforeach()
-    message(STATUS "print_all_variables------------------------------------------}")
-endmacro()
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 
@@ -45,7 +32,7 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
     endif()
 endif()
 
-# print_all_variables()
+find_package(Eigen3 REQUIRED CONFIG) # Eigen3::Eigen (v 3.4.1 is compatible)
 
 add_subdirectory(src)
 target_include_directories(${PROJECT_NAME} 

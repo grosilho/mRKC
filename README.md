@@ -15,23 +15,24 @@ This code has been used for the numerical experiments presented in:
 
 
 ## Install and Run
-The easiest way to run the code is by creating a Docker image from the Dockerfile provided here and running the code within a container. Otherwise, one could install the dependencies and compile the code as usual.
+One possible way to run the code is by creating a Docker image from the Dockerfile provided here and running the code within a container. Otherwise, one could compile the code as usual.
 
 ### Docker
 To create the Docker image, from the root directory of the repository, run:
-> docker build -t mRKC .  
+> docker build -t multirate .  
 
 For running the code, execute:
-> docker run --rm -ti -v "$(pwd)/results":/mRKC/results mRKC ARGS_LIST
+> docker run --rm -ti -v "$(pwd)/results":/multirate/results multirate ARGS_LIST
 
 For the `ARGS_LIST`, see below.
 
 ### Compile
-Before compiling the code install the dependencies: [eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page), [gmsh](https://gmsh.info/), and [fftw3](https://www.fftw.org/). Then, compile[^comp_err] the code running:
+For compilation, [eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page) is needed. However, if the code has been downloaded with `git clone ...` then a compatible version of `eigen` is cloned automatically by the makefile[^eigen]. Hence, the following command will download the dependency and compile the code:
+
 > mkdir build && cd build && cmake -S .. -B . && make
 
 Run the code from the ``build`` directory as
-> ./main ARGS_LIST
+> ./MultirateIntegrators ARGS_LIST
 
 For the `ARGS_LIST`, see the next section.
 
@@ -70,6 +71,5 @@ Assyr???
   <img src="./docs/img/WBF_SBFI_EU_Frameworkprogramme_E_RGB_pos_quer.png" height="80" />
 </p>
 
-
-[^comp_err]: If ``cmake`` doesn't  find the ``fftw3`` library, we suggest to compile ``fftw3`` using ``cmake`` (instead of the traditional ``./configure``). Check out the `Dockerfile` to see the commands that we used. 
+[^eigen]: If the code has been downloaded as a zip, then you should manually place a compatible version of eigen (e.g. 3.4.1) in the `/external/eigen`folder.
 
