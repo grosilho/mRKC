@@ -35,8 +35,8 @@ The following options are available:
     -oec        : sets the error controller. Values are 1,2,3 for
                   I=Integral, PI=Proportional I, PPI= Predictive PI controllers
                   respectively. Default: 3
-    -convtest   : If true, performs a time convergence test, i.e. runs several simulations and checks errors. Default: false
-                  If not provided, a reference solution is computed on the fly.
+    -convtest   : If provided, performs a time convergence test, i.e. runs several simulations and checks errors. Default: false
+                  If a reference solution is not provided, it is computed on the fly..
     -maxpow     : Minimal step size used for the convergence test is dt=tend/2^maxpow. Default: 6
     -minpow     : Maximal step size used for the convergence test is dt=tend/2^minpow. Default: 3
 --- List of problems:
@@ -65,21 +65,21 @@ The following options are available:
  Those marked with (m) are multirate integrators and can be applied only to (m) problems.
  For implicit solvers, the Jacobians are either provided analytically or
  computed numerically (expensive) depending on the problem.
-     EE     : Explicit Euler.
-     IE     : Implicit Euler.
-     EM     : Explicit Midpoint.
-     IM     : Implicit Midpoint.
-     RK4    : Runge-Kutta 4 (Classical RK).
-     IERKC  : Splitting method: stiff term with IE, mildly stiff term with RKC.
-     IE     : Implicit Euler.
-     mRKC   : Multirate RKC1 method.
-     RKC1   : First order Runge-Kutta-Chebyshev method.
-     RKC2   : Second order Runge-Kutta-Chebyshev method.
-     RKL1   : First order Runge-Kutta-Legendre method.
-     RKL2   : Second order Runge-Kutta-Legendre method.
-     RKU1   : First order Runge-Kutta-Chebyshev method with second kind polynomials.
-     RKU2   : Second order Runge-Kutta-Chebyshev method with second kind polynomials.
-     ROCK2  : Second order stabilized method with optimal polynomials.
-     DROKC2 : Damped ROCK2.
+     EE      : Explicit Euler.
+     IE      : Implicit Euler.
+     EM      : Explicit Midpoint.
+     IM      : Implicit Midpoint.
+     RK4     : Runge-Kutta 4 (Classical RK).
+     IERKC   : Splitting method: stiff term with IE, mildly stiff term with RKC.
+     IE      : Implicit Euler.
+     mRKC (m): Multirate RKC1 method.
+     RKC1    : First order Runge-Kutta-Chebyshev method.
+     RKC2    : Second order Runge-Kutta-Chebyshev method.
+     RKL1    : First order Runge-Kutta-Legendre method.
+     RKL2    : Second order Runge-Kutta-Legendre method.
+     RKU1    : First order Runge-Kutta-Chebyshev method with second kind polynomials.
+     RKU2    : Second order Runge-Kutta-Chebyshev method with second kind polynomials.
+     ROCK2   : Second order stabilized method with optimal polynomials.
+     DROKC2  : Damped ROCK2.
    
 ```
